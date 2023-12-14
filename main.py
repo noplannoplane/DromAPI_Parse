@@ -9,7 +9,7 @@ import time
 def get_data_from_api():
     url = "https://api.drom.ru/v1.2/bulls/search"
     params = {
-        "marks": "TOYOTA",
+        "brands": "TOYOTA",
         "models": "CROWN",
         "generation[]": ["15", "16"],
         "cities": ["vladivostok", "ussuriysk"],
@@ -45,7 +45,7 @@ def create_csv_file(data):
             ad_data = [
                 item.get("bull_id", "null"),
                 item.get("url", "null"),
-                item["car"].get("make", "null"),
+                item["car"].get("brand", "null"),
                 item["car"].get("model", "null"),
                 item.get("price", "null"),
                 item.get("price_formatted", "null"),
@@ -55,7 +55,7 @@ def create_csv_file(data):
                 "без пробега по РФ" if item["car"].get("run_mapped") == 2 else "null",
                 item["car"].get("color", "null"),
                 item["car"].get("body", "null"),
-                item["car"].get("engine_power", "null"),
+                item["car"].get("power", "null"),
                 item["car"].get("fuel_type", "null"),
                 item["car"].get("engine_capacity", "null")
             ]
